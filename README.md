@@ -1,6 +1,6 @@
 # Chatbot ITES
 
-Chatbot orientado a responder consultas sobre las carreras, requisitos, sedes y materias del Instituto Tecnológico de Estudios Superiores (ITES), utilizando un modelo de Gemini y un flujo de recuperación de información basado en un PDF institucional.
+Chatbot orientado a responder consultas sobre las carreras, requisitos, sedes y materias del ITES. 
 
 ![Proyecto funcionando](/data/Chatbot.png)
 
