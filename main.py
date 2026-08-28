@@ -56,18 +56,18 @@ if "mensajes" not in st.session_state:
 
 with st.sidebar:
     st.subheader("Entrada")
-    st.metric("Tokens Entrada", f"{st.session_state.token_input_total:.6f}")
+    st.metric("Tokens Entrada", f"{st.session_state.token_input_total:.0f}")
     st.metric("Costo Entrada", f"${st.session_state.coste_total_input:.6f}")
 
     st.subheader("Salida")
-    st.metric("Tokens Salida", f"{st.session_state.token_output_total:.6f}")
+    st.metric("Tokens Salida", f"{st.session_state.token_output_total:.0f}")
     st.metric("Costo Salida", f"${st.session_state.coste_total_output:.6f}")
 
     tokens_totales = st.session_state.token_input_total + st.session_state.token_output_total
     coste_totales = st.session_state.coste_total_input + st.session_state.coste_total_output
 
     st.subheader("Total")
-    st.metric("Tokens Totales", f"{tokens_totales:.6f}")
+    st.metric("Tokens Totales", f"{tokens_totales:.0f}")
     st.metric("Costes Totales", f"${coste_totales:.6f}")    
 
     if st.sidebar.button("Reiniciar conversación"):
@@ -147,7 +147,9 @@ if prompt := st.chat_input("Hacé tus preguntas sobre el ITES"):
             message_placeholder.markdown(full_response)
             st.session_state.mensajes.append({"role": "assistant", "content": full_response})
 
+            # Si querés que se vea el uso de tokens y el coste por mensaje sacá esto.
             st.rerun()
 
         except Exception as e:
-            st.error(f"Error de procesamiento: {e}")        
+            st.error(f"Hubo un error procesando el mensaje. Lo siento.")
+            print(e)
